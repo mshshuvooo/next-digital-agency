@@ -1,65 +1,57 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Layout from '../src/components/Layout'
+import Header from '../src/components/header/Header'
+import HomeSlider from '../src/components/homeSlider/HomeSlider'
+import SectionTitle from '../src/components/sectionTitle/SectionTitle';
+import Features from '../src/components/features/Features';
+import Achievements from '../src/components/achievements/Achievements';
 
-export default function Home() {
+
+const Home = ({homePageData}) => {
+
+const {featuresSectionSubTitle, featuresSectionTitle, featuresSectionDesc} = homePageData.features;
+const {achievementSectionSubTitle, achievementSectionTitle, achievementSectionText} = homePageData.achievements;
+const achievementLists = homePageData.achievementLists ? homePageData.achievementLists : {}
+
+console.log(achievementLists);
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout pageTitle={'Home'}>
+        <Header/>
+        <HomeSlider slides={homePageData.slider} />
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <section className="features-section section-padding">
+          <SectionTitle 
+            subSecTitle={featuresSectionSubTitle} 
+            secTitle={featuresSectionTitle}
+            secTitleDesc={featuresSectionDesc}
+          />
+          <Features features={homePageData.features} />
+        </section>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+        <section className="achievements-section section-padding">
+          <SectionTitle 
+            subSecTitle={achievementSectionSubTitle} 
+            secTitle={achievementSectionTitle}
+            secTitleDesc={achievementSectionText}
+          />
+          <Achievements achievement={homePageData.achievements}/>
+        </section>
+        
+    </Layout>
   )
 }
+
+
+
+
+
+export async function getStaticProps () {
+  const request = await fetch('http://projects.shahadatshuvo.com/softbox/wp-json/wp/v2/homepage')
+  const homePageData = await request.json()
+  return {
+    props: {
+      homePageData: homePageData
+    }
+  }
+}
+
+export default Home;

@@ -1,16 +1,484 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+ 
+img {
+    max-width: 100%;
+    height: auto;
+}
+ 
+h1,h2,h3,h4,h5,h6{
+    margin: 0 0 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+ 
+a, a:hover, a:focus{
+    text-decoration: none;
+    outline: none;
+    border: none;
+}
+ 
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+a.boxed-round-btn {
+    display: block;
+    background-color: #643094;
+    color: #fff;
+    padding: 16px 40px;
+    border-radius: 50px;
+    transition: all .4s ease;
+}
+
+a.boxed-round-btn:hover{
+    background-color: #000;
+}
+
+
+.section-title-wrap {
+    margin-bottom: 60px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: ". . . s s s s s s . . .";
+    text-align: center;
+}
+
+.section-title {
+    grid-area: s;
+}
+
+.section-title h4 {
+    color: #643094;
+    font-size: 20px;
+    line-height: 10px;
+}
+
+.section-title h1 {
+    font-size: 48px;
+    color: #18191d;
+}
+
+.section-title p {
+    font-size: 16px;
+    line-height: 28px;
+    color: #545454;
+}
+
+.section-padding{
+    padding: 100px;;
+}
+
+
+
+
+
+/*------- Header Area CSS -------*/
+
+.softbox-header-top{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: "i i i i i i i i i s s s ";
+    align-items: center;
+    column-gap: 15px;
+}
+
+.header-info{
+    grid-area: i;
+}
+
+.header-social-networks{
+    grid-area: s;
+    justify-self: end;
+}
+
+.softbox-header-bottom{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: "l l m m m m m m m m b b ";
+    align-items: center;
+    column-gap: 15px;
+}
+
+.logo{
+    grid-area: l;
+}
+
+.mainmenu {
+    grid-area: m;
+}
+
+.header-button{
+    justify-self: end;
+    grid-area: b;
+}
+
+.header-info p {
+    display: inline-block;
+    margin-right: 13px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.softbox-header-top {
+    background-color: #643094;
+    color: #fff;
+    padding: 13px 100px;
+}
+
+.header-info p strong {
+    font-weight: 400;
+    padding: 0 5px;
+}
+
+.header-social-networks a {
+    color: #fff;
+    margin-left: 20px;
+    transition: all .4s ease;
+}
+
+.header-social-networks a:hover {
+    color: #f1c310;
+}
+
+.softbox-header-bottom {
+    padding: 10px 100px;
+}
+
+.mainmenu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.mainmenu ul li {
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+    color: #18191d;
+    font-weight: 300;
+    cursor: pointer;
+    text-transform: capitalize;
+    padding: 12px 25px;
+    transition: all 0.4s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.mainmenu ul li a {
+    display: block;
+    transition: 0.4s;
+    font-size: 16px;
+    color: #18191d;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.mainmenu li ul {
+    position: absolute;
+    top: 60px;
+    width: 200px;
+    z-index: 2;
+    background-color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 5;
+}
+
+
+
+.mainmenu ul li ul li {
+    border-bottom: 1px solid #e6e6e6;
+    display: block;
+    padding: 12px 15px;
+}
+
+.mainmenu ul li ul li:last-child{
+    border: none;
+}
+
+.mainmenu ul li:hover > ul {
+    visibility: visible;
+    opacity: 1;
+    top: 45px;
+
+}
+
+.mainmenu ul li > a {
+    transition: 0.4s ease;
+}
+
+.mainmenu ul li:hover > a {
+    color: #643094;
+}
+
+.mainmenu ul li:hover {
+    color: #643094;
+}
+
+.mainmenu ul ul li ul {
+    left: 0;
+    top: 0;
+}
+
+.mainmenu ul ul li:hover > ul {
+    top: 0;
+    left: 100%;
+}
+
+.dropdown-angle-down {
+    display: inline-block;
+    padding-left: 10px;
+    top: 2px;
+    position: relative;
+}
+
+.dropdown-angle-right {
+    display: inline-block;
+    padding-left: 10px;
+    top: 12px;
+    right: 10px;
+    position: absolute;
+}
+
+
+/* -- Slider CSS -- */
+
+.slide-inner {
+    height: 700px;
+    background-size: cover;
+    background-position: center;
+    padding: 0 100px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    position: relative;
+    z-index: 1;
+    align-items: center;
+    grid-template-areas: "c c c c c c c . . . . .";
+}
+
+.slide-inner.slideCenter {
+    grid-template-areas: ". . c c c c c c c c . .";
+}
+
+.slide-inner.slideCenter .slide-content{
+    text-align: center;
+}
+
+.slide-content {
+    grid-area: c
+}
+
+.slide-inner:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: -1;
+    opacity: .5;
+}
+
+.slide-content h1 {
+    color: #f78040;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 70px;
+}
+
+.slide-content h2 {
+    color: #fff;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 70px;
+}
+
+.slide-content p {
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.slide-btns {
+    margin-top: 35px;
+}
+
+.slide-btns a {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 15px 35px;
+    border-radius: 50px;
+    transition: all .5s ease;
+    font-size: 15px;
+}
+
+.slick-arrow {
+    position: absolute;
+    top: 50%;
+    color: #fff;
+    left: 25px;
+    height: 40px;
+    margin-top: -15px;
+    font-size: 35px;
+    z-index: 2;
+    line-height: 44px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.softbox-slider ul.slick-dots {
+    display: none !important;
+}
+
+.softbox-slider .slick-arrow.slick-prev {
+    left: auto;
+    right: 30px;
+    border-right: 2px solid #ff8140;
+    padding-right: 10px;
+}
+
+.softbox-slider .slick-arrow.slick-next {
+    border-left: 2px solid #ff8140;
+    padding-left: 10px;
+}
+
+.softbox-slider .slick-arrow:hover {
+    color: #f77f40;
+}
+
+
+/*------ Features Area CSS -----*/
+.feature-image {
+    grid-area: i;
+}
+
+.feature-items {
+    grid-area: f;
+}
+
+.features-area {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas:
+        "i i i i i i . f f f f f";
+    align-items: center;
+}
+
+.feture-icon {
+    position: absolute;
+    width: 60px;
+    left: 0;
+    top: 5px;
+    transition: all 1.2s;
+}
+
+.single-feature-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 90px;
+}
+
+.feature-text h3 {
+    color: #18191d;
+    font-size: 24px;
+    margin: 0 0 10px;
+}
+
+.feature-text p {
+    color: #535353;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.single-feature-item:hover .feture-icon {
+    transform: rotateY(360deg);
+}
+
+
+/*------ About Area CSS ------*/
+.achievements-section {
+    background-color: #f6f6f6;
+}
+
+.achievement-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    justify-content: center;
+    padding: 0 100px;
+    grid-column-gap: 20px;
+}
+
+.single-achievement-item {
+    background-color: #fff;
+    box-shadow: 0 0 5px rgb(127 123 123 / 10%);
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    height: 150px;
+    align-items: center;
+    display: flex;
+    transition: all .6s ease;
+}
+
+.achievement-item-inner {
+    width: 100%;
+}
+
+.single-achievement-item i {
+    font-size: 45px;
+    margin: 0 0 10px;
+}
+
+.single-achievement-item h3 {
+    font-size: 35px;
+    font-weight: 300;
+    color: #7b7b7b;
+    margin: 0 0 5px;
+}
+
+.single-achievement-item h3 span {
+    font-size: 25px;
+}
+
+.single-achievement-item h4 {
+    margin: 0;
+}
+
+.single-achievement-item:nth-child(odd) i {
+    color: #74459f;
+}
+
+.single-achievement-item:nth-child(even) i {
+    color: #84b814;
+}
+
+.single-achievement-item:hover i,
+.single-achievement-item:hover h3,
+.single-achievement-item:hover h4{
+    transition: all .6s ease;
+}
+
+.single-achievement-item:hover i,
+.single-achievement-item:hover h3,
+.single-achievement-item:hover h4{
+    color: #fff;
+}
+
+.single-achievement-item:nth-child(odd):hover{
+    background-color: #74459f;
+}
+
+.single-achievement-item:nth-child(even):hover{
+    background-color: #84b814;
+}
+
+.single-achievement-item:hover i{
+    transform: translateY(-5px);
 }
